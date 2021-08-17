@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use Illuminate\Http\Request;
+
 
 class dashboardController extends Controller
 {
@@ -13,8 +15,8 @@ class dashboardController extends Controller
      */
     public function index()
     {
-
-        return view('admin.pages.dashboard');
+        $data = Member::paginate(10 );
+        return view('admin.pages.dashboard', compact('data'));
     }
 
     /**
@@ -82,4 +84,15 @@ class dashboardController extends Controller
     {
         //
     }
+    public function memberSearch(){
+        return view('admin.pages.memberSearch');
+    }
+    public function getMemberSearch(Request $request){
+       // return $request->all();
+        $form = $request->form;
+        $to = $request->to;
+
+      return  Member::whereBetween('created_at', [$form, $to])->where('name','LIKE', '%' . $request->keyword. '%')->orWhere('email', 'LIKE', '%' . $request->keyword. '%')->get();
+    }
 }
+

@@ -12,43 +12,47 @@
                     <th scope="col">name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Fee</th>
+                    <th scope="col">Phone</th>
                     <th scope="col">Active</th>
                 </tr>
                 </thead>
                 <tbody>
+                @php
+                    $i=1
+                @endphp
+                @foreach($data as $item)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>azad</td>
-                        <td>hsoen</td>
-                        <td>azad@gmail.com</td>
-                        <td>azad@gmail.com</td>
+                        <th >{{$i++}}</th>
+                        <td>{{$item->name}}</td>
+                        <td>{{$item->email}}</td>
+                        <td>&#2547;{{$item->fee}}</td>
+                        <td>{{$item->phone}}</td>
+                        <td>Edit | delete</td>
                     </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>azad</td>
-                        <td>hsoen</td>
-                        <td>azad@gmail.com</td>
-                        <td>azad@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>azad</td>
-                        <td>hsoen</td>
-                        <td>azad@gmail.com</td>
-                        <td>azad@gmail.com</td>
-                    </tr>
+                @endforeach
                 </tbody>
             </table>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
+{{--            <nav aria-label="...">--}}
+{{--                <ul class="pagination">--}}
+{{--                    <li class="page-item disabled">--}}
+{{--                        <a class="page-link" href="#" tabindex="-1">{{$data->perPage()}}</a>--}}
+{{--                    </li>--}}
+{{--                    <li class="page-item"><a class="page-link" href="#">{{$data->items(1)}}</a></li>--}}
+{{--                    <li class="page-item active">--}}
+{{--                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>--}}
+{{--                    </li>--}}
+{{--                    <li class="page-item">--}}
+{{--                        <a class="page-link" href="#">{{$data->nextPageUrl()}}</a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </nav>--}}
+{{--            {{$data->links()}}--}}
+
         </div>
 
+
     </div>
+
 @endsection
+
+

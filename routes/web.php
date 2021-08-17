@@ -29,6 +29,9 @@ Route::post('registration/member', [MemberController::class, 'store'])->name('re
 //#######################_end Member_##########################
 Route::group(['middleware' => 'auth'], function(){
     Route::get('dashboard', [dashboardController::class, 'index'])->name('dashboard');
+    Route::get('dashboard/member/search', [dashboardController::class, 'memberSearch'])->name('search');
+    Route::post('dashboard/member/search', [dashboardController::class, 'getMemberSearch'])->name('DataSearch');
+
 });
 
 

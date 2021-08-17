@@ -80,7 +80,7 @@ class MemberController extends Controller
     if($result){
         return back()->with(['message'=>'member registration success']);
     }else{
-        return back()->with(['message'=>'member registration failed']);
+        return back()->with(['error'=>'member registration failed']);
     }
 
     }
