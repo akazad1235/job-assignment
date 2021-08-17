@@ -12,36 +12,53 @@
 <body>
     <div class="container w-50">
         <h4>Member Resigration</h4>
-        <form method="POST" action="{{route('reg.member')}}">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if(session()->has('message'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session()->get('message') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        <form method="POST" action="{{route('reg.member')}}" enctype='multipart/form-data' >
             @csrf
         <div class="d-flex">
             <div class="form-group w-50 mr-1">
-                <label for="name">Name</label>
+                <label for="name">Name<span class="text-danger">*</span></label>
                 <input type="text" id="name" name="name" class="form-control">
             </div>
             <div class="form-group w-50">
-                <label for="email">email</label>
+                <label for="email">Email<span class="text-danger">*</span></label>
                 <input type="email" id="email" name="email" class="form-control">
             </div>
         </div>
         <div class="form-group">
-            <label for="add">address</label>
-            <textarea class="form-control" name="" id="" cols="30" rows="5" ></textarea>
+            <label for="add">Address<span class="text-danger">*</span></label>
+            <textarea class="form-control" name="address" id="" cols="30" rows="5" ></textarea>
         </div>
         <div class="d-flex">
             <div class="form-group w-50 mr-1">
-                <label for="ph">phone</label>
-                <input type="text" id="ph" name="phone" class="form-control">
+                <label for="ph">Phone<span class="text-danger">*</span></label>
+                <input type="number" id="ph" name="phone" class="form-control">
             </div>
             <div class="form-group w-50">
-                <label for="fee">Fee</label>
+                <label for="fee">Fee<span class="text-danger">*</span></label>
                 <input type="number" id="fee" name="fee" class="form-control">
             </div>
         </div>
 
 
         <div class="form-group">
-            <label for="dis">District</label>
+            <label for="dis">District<span class="text-danger">*</span></label>
             <select name="district" id="dis" class="form-control">
                 <option value="dhaka">Dhaka</option>
                 <option value="rajshahi">Rajshahi</option>
@@ -51,21 +68,21 @@
         </div>
         <div class="d-flex">
             <div class="form-group w-50 mr-1">
-                <label for="nid">NID</label>
+                <label for="nid">NID<span class="text-danger">*</span></label>
                 <input type="file" id="nid" name="nid" class="form-control">
             </div>
             <div class="form-group w-50">
-                <label for="photo">photo</label>
+                <label for="photo">Photo<span class="text-danger">*</span></label>
                 <input type="file" id="photo" name="photo" class="form-control">
             </div>
         </div>
         <div class="d-flex">
             <div class="form-group w-50 mr-1">
-                <label for="pass">password</label>
+                <label for="pass">Password<span class="text-danger">*</span></label>
                 <input type="password" id="pass" name="password" class="form-control">
             </div>
             <div class="form-group w-50">
-                <label for="re-pass">password</label>
+                <label for="re-pass">Confirm Password<span class="text-danger">*</span></label>
                 <input type="password" id="re-pass" name="rePassword" class="form-control">
             </div>
         </div>

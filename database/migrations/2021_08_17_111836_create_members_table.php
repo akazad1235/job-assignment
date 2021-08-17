@@ -17,12 +17,12 @@ class CreateMembersTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('address');
-            $table->integer('phone');
+            $table->integer('phone')->unique();
             $table->string('district');
             $table->string('NID');
             $table->string('photo');
             $table->integer('fee');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->enum('status', ['active','inactive'])->default('active');
             $table->string('password');
             $table->timestamps();

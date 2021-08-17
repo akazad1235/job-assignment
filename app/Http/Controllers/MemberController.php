@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Image;
+
+
 
 class MemberController extends Controller
 {
@@ -35,7 +40,49 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+     //   return $request->all();
+
+        Validator::make($request->all(), [
+            'name' => ['required'],
+            'email' => ['required','max:255', 'unique:members'],
+            'phone' => ['required','min:11', 'max:11', 'unique:members'],
+            'address' => ['required'],
+            'fee' => ['required'],
+            'district' => ['required'],
+            'nid' => ['required'],
+            'photo' => ['required'],
+            'password' => 'required|required_with:rePassword|same:rePassword|min:7|',
+            'rePassword' =>['required']
+        ])->validate();
+
+        $nid = $request->file('nid');
+        $photo = $request->file('photo');
+        $nidFileName = rand(0, 999999999) . '_' . date('Ymdhis').'_' . rand(100, 999999999) . '.' . $nid->getClientOriginalExtension();
+        // return $fileName;
+        Image::make($nid)->resize(200, 200)->save(public_path('admin/images/nid').$nidFileName );
+
+           $photoFileName = rand(0, 999999999) . '_' . date('Ymdhis').'_' . rand(100, 999999999) . '.' . $photo->getClientOriginalExtension();
+           // return $fileName;
+           Image::make($photo)->resize(200, 200)->save(public_path('admin/images/photo').$photoFileName);
+
+
+     $result =   Member::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'fee' => $request->fee,
+            'district' => $request->district,
+            'NID' =>  $nidFileName ,
+            'photo' => $photoFileName,
+            'password' => Hash::make($request->password),
+        ]);
+    if($result){
+        return back()->with(['message'=>'member registration success']);
+    }else{
+        return back()->with(['message'=>'member registration failed']);
+    }
+
     }
 
     /**
