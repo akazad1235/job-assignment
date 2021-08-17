@@ -7,10 +7,10 @@
         <div class="member-list">
             <form method="POST" action="{{route('DataSearch')}}">
                 @csrf
-                <input type="date" name="form"> Form
-                <input type="date" name="to">To
-                <input type="text" name="keyword">keyword
-                <button type="submit" class="btn btn-info">Search</button>
+                Form <input type="date" name="form">
+                To <input type="date" name="to">
+                keyword <input type="text" name="keyword" placeholder="search key name/email">
+                <button type="submit" >Search</button>
 
             </form>
 
