@@ -1,5 +1,5 @@
 <footer class="bg-primary">
-    fgdfgd
+{{--    this is footer section--}}
 </footer>
 
 

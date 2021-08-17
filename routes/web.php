@@ -18,11 +18,12 @@ use \App\Http\Controllers\MemberController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('member');
+//});
 //#######################_start Member_##########################
 
+Route::get('/', [MemberController::class, 'index']);
 Route::get('member', [MemberController::class, 'index']);
 Route::post('registration/member', [MemberController::class, 'store'])->name('reg.member');
 
@@ -38,4 +39,4 @@ Route::group(['middleware' => 'auth'], function(){
 
 Auth::routes(['register' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

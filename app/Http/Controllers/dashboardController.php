@@ -93,8 +93,8 @@ class dashboardController extends Controller
         $to = $request->to;
 
       $data =  Member::whereBetween('created_at', [$form, $to])->where('name','LIKE', '%' . $request->keyword. '%')->orWhere('email', 'LIKE', '%' . $request->keyword. '%')->get();
-      $fee = $data->sum('fee');
-      return view('admin.pages.searchableData', compact('data', 'fee'));
+      $totalFee = $data->sum('fee');
+      return view('admin.pages.searchableData', compact('data', 'totalFee'));
     }
 }
 

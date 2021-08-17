@@ -51,20 +51,13 @@ class LoginController extends Controller
 
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
-
              if (auth()->user()->is_admin == 1) {
-
                 return redirect()->route('dashboard');
              }else{
-                return 'ok';
-
-                //return redirect()->route('dashboard');
+                return 'your account inactive';
             }
         }else{
-            return 'not ok';
-
-          //  return redirect()->route('dashboard/login')
-             //   ->with('error','Email-Address And Password Are Wrong.');
+            return redirect()->route('login')->with('message','your email or password not match');
         }
 
     }

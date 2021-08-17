@@ -12,6 +12,23 @@
 <div class="d-flex justify-content-center align-items-center mt-5">
     <div class="w-25  login  ">
         <h4 class="text-center mb-4 pb-3 border-bottom">Admin Loin</h4>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if(session()->has('message'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session()->get('message') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="form-group">

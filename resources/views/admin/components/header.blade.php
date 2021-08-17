@@ -14,7 +14,7 @@
 <header>
     <div class="headerssss text-white d-flex justify-content-between align-items-center">
         <div class="head ml-5 mt-1">
-            <h4><a href="" class="text-white">Dashboard</a></h4>
+            <h4><a href="{{route('dashboard')}}" class="text-white">Dashboard</a></h4>
         </div>
         <div class="dropdown show">
             <a class="btn text-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
