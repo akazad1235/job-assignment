@@ -9,17 +9,18 @@
     <link rel="stylesheet" href="{{asset('admin/css/style.css')}}">
 </head>
 <body>
-<div class="d-flex justify-content-center align-items-center mt-5" >
+<div class="d-flex justify-content-center align-items-center mt-5">
                 <div class="w-25  login  ">
                 <h4 class="text-center mb-4 pb-3 border-bottom">Admin Loin</h4>
-                <form>
+                <form method="POST" action="{{ route('dashboard') }}">
+                        @csrf
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="your email"  onChange={handleChange}/>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="your email"/>
                     </div>
                     <div class="form-group">
                         <label for="pass">Password</label>
-                        <input type="password" class="form-control"  id="pass" name="password" placeholder="your password"  onChange={handleChange}/>
+                        <input type="password" class="form-control"  id="pass" name="password" placeholder="your password"/>
                     </div>
                     <div>
                         <button class="btn btn-success form-control">Login</button>

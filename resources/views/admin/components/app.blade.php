@@ -13,7 +13,7 @@
 <body>
     <header>
         <div class="navigation bg-secondary">
-           ;dkg;l
+
         </div>
     </header>
     <div class="img-fluid d-flex justify-content-start">

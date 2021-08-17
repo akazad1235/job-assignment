@@ -14,7 +14,7 @@ class dashboardController extends Controller
     public function index()
     {
 
-        return view('login');
+        return view('admin.components.app');
     }
 
     /**

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\dashboardController;
+use \App\Http\Controllers\Auth\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +19,12 @@ use \App\Http\Controllers\dashboardController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/dashboard',[dashboardController::class, 'index']);
-Route::get('/dashboard/login',[dashboardController::class, 'index']);
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('dashboard', [dashboardController::class, 'index'])->name('dashboard');
+});
 
-Auth::routes();
+
+
+Auth::routes(['register' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
