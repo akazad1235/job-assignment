@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use Illuminate\Http\Request;
 
-class dashboardController extends Controller
+class MemberController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,7 @@ class dashboardController extends Controller
      */
     public function index()
     {
-
-        return view('admin.pages.dashboard');
+        //
     }
 
     /**
@@ -41,10 +41,10 @@ class dashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Member $member)
     {
         //
     }
@@ -52,10 +52,10 @@ class dashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Member $member)
     {
         //
     }
@@ -64,10 +64,10 @@ class dashboardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Member $member)
     {
         //
     }
@@ -75,10 +75,10 @@ class dashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Member $member)
     {
         //
     }

@@ -1,7 +1,23 @@
-.content{
-    border: 1px solid orangered;
-    color:red
+.headerssss{
+    background: blueviolet;
 }
-.content h4{
-    font-size: 100px;
+.content{
+    background: #F0F0F3;
+    padding: 10px;
+}
+.sidebar{
+
+}
+.sidebar li{
+    border-bottom: 1px solid #ddd;
+    list-style: none;
+    padding: 8px;
+}
+.sidebar li a{
+    color: white;
+    font-size: 20px;
+    width: 100%;
+}
+.sidebar li a:hover{
+ color: blueviolet;
 }
